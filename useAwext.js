@@ -6,22 +6,22 @@
 (function moduleify(moduleFactory) {
   'use strict';
 
-  var useAwextFunction = null;
+  var useAwextLib = null;
 
   if (typeof define === 'function' && define.amd) {
-    define('useAwext', ['awext'], function (dep1) {
-      useAwextFunction = useAwextFunction || moduleFactory(dep1);
-      return useAwextFunction;
+    define('useAwextLib', ['awext'], function (dep1) {
+      useAwextLib = useAwextLib || moduleFactory(dep1);
+      return useAwextLib;
     });
   } else if (typeof module === 'object' && typeof exports === 'object') {
-    useAwextFunction = useAwextFunction || moduleFactory([require('awext')]);
-    module.exports = useAwextFunction;
+    useAwextLib = useAwextLib || moduleFactory([require('awext')]);
+    module.exports = useAwextLib;
   }
 
   var root = (typeof window !== 'undefined' ? window : typeof self !== 'undefined' ? self : typeof global !== 'undefined' ? global : this);
   if (root && typeof root === 'object') {
-    useAwextFunction = useAwextFunction || moduleFactory(root['awext']);
-    root['useAwextFunction'] = awextLib;
+    useAwextLib = useAwextLib || moduleFactory(root['awext']);
+    root['useAwextLib'] = useAwextLib;
   }
 }(function moduleFactory(deps_Awext) {
   'use strict';
