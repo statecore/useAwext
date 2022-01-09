@@ -31,11 +31,11 @@
   var _lib_ = {};
   var _isFunction = deps_Awext.isFunction;
   var _isPromise = deps_Awext.isPromise;
-  var _genUUID = deps_Awext.genUUID; // change the name
+  var _genUUID = deps_Awext.genUUID;
   var _blankFunction = deps_Awext.blankFunction;
   var _objectAssign = deps_Awext.objectAssign;
   var _objectBindProps = deps_Awext.objectBindProps;
-  var _rebaseAwext = deps_Awext.rebaseAwext; // change the name
+  var _rebaseAwext = deps_Awext.rebaseAwext;
   var _isNone = deps_Awext.isNone;
 
   deps_Awext = _objectAssign({}, deps_Awext);
