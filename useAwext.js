@@ -118,5 +118,17 @@
   }
   _lib_.useAwext = useAwext;
 
+  function useAwextUUID(React) {
+    var { useState } = React;
+    var [uuid, setUUID] = useState(null);
+    if (uuid === null) {
+      var newUUID = _genUUID();
+      setUUID(newUUID);
+      return newUUID;
+    }
+    return uuid;
+  }
+  _lib_.useAwextUUID = useAwextUUID;
+
   return _objectAssign({}, _lib_);
 }));
