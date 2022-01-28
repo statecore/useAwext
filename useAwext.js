@@ -5,23 +5,21 @@
 
 (function moduleify(moduleFactory) {
   'use strict';
-
-  var useAwextLib = null;
-
+  var theLib = null;
   if (typeof define === 'function' && define.amd) {
-    define('useAwextLib', ['awext'], function (dep1) {
-      useAwextLib = useAwextLib || moduleFactory(dep1);
-      return useAwextLib;
-    });
+    function moduleFactoryWrapper() {
+      theLib = theLib || moduleFactory.apply(this, arguments);
+      return theLib;
+    }
+    define('useAwext', ['awext'], moduleFactoryWrapper);
   } else if (typeof module === 'object' && typeof exports === 'object') {
-    useAwextLib = useAwextLib || moduleFactory([require('awext')]);
-    module.exports = useAwextLib;
+    theLib = theLib || moduleFactory(require('awext'));
+    module.exports = theLib;
   }
-
   var root = (typeof window !== 'undefined' ? window : typeof self !== 'undefined' ? self : typeof global !== 'undefined' ? global : this);
   if (root && typeof root === 'object') {
-    useAwextLib = useAwextLib || moduleFactory(root['awext']);
-    root['useAwextLib'] = useAwextLib;
+    theLib = theLib || moduleFactory(root['awext']);
+    root['useAwext'] = theLib;
   }
 }(function moduleFactory(deps_Awext) {
   'use strict';
@@ -130,5 +128,5 @@
   }
   _lib_.useAwextUUID = useAwextUUID;
 
-  return _objectAssign({}, _lib_);
+  return _objectAssign(useAwext, _lib_);
 }));
