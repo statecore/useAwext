@@ -35,6 +35,8 @@
   var _objectBindProps = deps_Awext.objectBindProps;
   var _rebaseAwext = deps_Awext.rebaseAwext;
   var _isNone = deps_Awext.isNone;
+  var _createAwext = deps_Awext.createAwext;
+  var _hasAwext = deps_Awext.hasAwext;
 
   deps_Awext = _objectAssign({}, deps_Awext);
 
@@ -47,8 +49,8 @@
     var stateObjectForceUpdateValue = useState(0);
     var setForceUpdateValue = stateObjectForceUpdateValue[1];
     var awextName = ['_created_by_useAwext_', awextFlag.uuid];
-    var isFirst = !hasAwext(awextName);
-    var awext = createAwext(awextName, {});
+    var isFirst = !_hasAwext(awextName);
+    var awext = _createAwext(awextName, {});
     if (isFirst) {
       var isInitFunction = _isFunction(initFunc);
       // bind default functions
